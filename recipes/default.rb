@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: vagrantize
+# Cookbook Name:: vagrant_basebox
 # Recipe:: default
 #
 # Copyright (C) 2013 YOUR_NAME
@@ -26,9 +26,15 @@ file "/home/vagrant/.ssh/authorized_keys" do
 	group 'vagrant'
 end
 
+cookbook_file "/etc/sudoers" do
+	mode 0440
+end
+
 sudo 'vagrant' do
   user      "vagrant"    # or a username
   nopasswd 	true
   runas     'ALL'   # or 'app_user:tomcat'
   commands  ['ALL']
 end
+
+#include_recipe "vagrant_basebox::vbox_guest_additions"
