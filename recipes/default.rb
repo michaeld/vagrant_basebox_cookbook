@@ -36,5 +36,3 @@ sudo 'vagrant' do
   runas     'ALL'   # or 'app_user:tomcat'
   commands  ['ALL']
 end
-
-#include_recipe "vagrant_basebox::vbox_guest_additions"
